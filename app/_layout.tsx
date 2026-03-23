@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { getDatabase } from '../src/db/database';
-import { seedDatabase } from '../src/db/seed';
+import { initDatabase } from '../src/db';
 import { colors } from '../src/constants/theme';
 
 export default function RootLayout() {
@@ -11,8 +10,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     async function init() {
-      await getDatabase();
-      await seedDatabase();
+      await initDatabase();
       setIsReady(true);
     }
     init();

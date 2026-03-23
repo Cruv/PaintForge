@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, Alert } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { getEntity, getRecipesForScheme } from '../../src/db/database';
+import { getEntity, getRecipesForScheme } from '../../src/db';
 import { useSchemeStore } from '../../src/stores/schemeStore';
 import { ColorSwatch } from '../../src/components/ColorSwatch';
 import type { Scheme, Paint, Recipe, Model } from '../../src/types';

@@ -5,7 +5,7 @@ import {
   insertEntity,
   updateEntity,
   deleteEntity,
-} from '../db/database';
+} from '../db';
 
 interface ModelStore {
   models: Model[];

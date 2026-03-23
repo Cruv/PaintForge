@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, Alert } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { getEntity } from '../../src/db/database';
+import { getEntity } from '../../src/db';
 import { useRecipeStore } from '../../src/stores/recipeStore';
 import { ColorSwatch } from '../../src/components/ColorSwatch';
 import { StockBadge } from '../../src/components/StockBadge';

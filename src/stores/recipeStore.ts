@@ -8,7 +8,7 @@ import {
   getRecipesForModel,
   getRecipesForPaint,
   getRecipesForScheme,
-} from '../db/database';
+} from '../db';
 
 interface RecipeStore {
   recipes: Recipe[];

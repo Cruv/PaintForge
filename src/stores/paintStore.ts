@@ -10,7 +10,7 @@ import {
   getRecipesForPaint,
   getPaintsNeedingRestock,
   getOnOrderPaints,
-} from '../db/database';
+} from '../db';
 
 interface PaintStore {
   ownedPaints: Paint[];

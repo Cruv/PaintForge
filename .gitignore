@@ -39,3 +39,7 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# server data (Docker volume)
+server/data/
+data/

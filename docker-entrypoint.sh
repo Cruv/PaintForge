@@ -24,8 +24,12 @@ existing_group=$(getent group "$PGID" | cut -d: -f1 2>/dev/null) || true
 addgroup -g "$PGID" abc
 adduser -u "$PUID" -G abc -D -s /bin/sh abc
 
-# Ensure nginx directories are writable by abc
-chown -R abc:abc /var/log/nginx /var/lib/nginx /run/nginx
+# Ensure directories are writable by abc
+chown -R abc:abc /app/data /var/log/nginx /var/lib/nginx /run/nginx
+
+# Start backend as unprivileged user
+echo "Starting PaintForge API..."
+su -s /bin/sh abc -c "cd /app/server && DB_PATH=/app/data/paintforge.db node index.js" &
 
 # Start nginx (master binds port 80 as root, workers run as abc)
 echo "Starting nginx..."

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Pressable, Alert, TextInput } from 'react-native';
 import { useLocalSearchParams, useRouter, Stack } from 'expo-router';
-import { getEntity, getRecipesForModel } from '../../src/db/database';
+import { getEntity, getRecipesForModel } from '../../src/db';
 import { useModelStore } from '../../src/stores/modelStore';
 import { useRecipeStore } from '../../src/stores/recipeStore';
 import { StatusBadge } from '../../src/components/StatusBadge';

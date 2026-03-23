@@ -271,3 +271,27 @@ function getEntityName(entity: Entity): string {
       return entity.name;
   }
 }
+
+// --- Adapter ---
+
+import type { DatabaseAdapter } from './types';
+
+export function createSqliteAdapter(): DatabaseAdapter {
+  return {
+    insertEntity,
+    insertEntitiesBatch,
+    getEntity,
+    getEntitiesByType,
+    updateEntity,
+    deleteEntity,
+    searchEntities,
+    getRecipesForPaint,
+    getRecipesForModel,
+    getRecipesForScheme,
+    getPaintsNeedingRestock,
+    getOnOrderPaints,
+    getOwnedPaints,
+    getEntityCount,
+    hasSeedData,
+  };
+}
