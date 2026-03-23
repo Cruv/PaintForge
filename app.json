@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "PaintForge",
+    "slug": "PaintForge",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "paintforge",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.paintforge.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#1a1a2e",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "package": "com.paintforge.app"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-sqlite"
+    ]
+  }
+}
