@@ -30,6 +30,15 @@ export default function RootLayout() {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen
+          name="scan"
+          options={{
+            headerShown: true,
+            title: 'Scan Paints',
+            headerTintColor: colors.primary,
+            presentation: 'modal',
+          }}
+        />
+        <Stack.Screen
           name="paint/[id]"
           options={{
             headerShown: true,

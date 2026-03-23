@@ -16,4 +16,6 @@ export interface DatabaseAdapter {
   getOwnedPaints(): Promise<Entity[]>;
   getEntityCount(type: EntityType): Promise<number>;
   hasSeedData(): Promise<boolean>;
+  lookupBarcode(code: string): Promise<Entity | null>;
+  saveBarcode(code: string, paintId: string): Promise<void>;
 }

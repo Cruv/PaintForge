@@ -90,3 +90,11 @@ export async function getEntityCount(type: EntityType): Promise<number> {
 export async function hasSeedData(): Promise<boolean> {
   return getAdapter().hasSeedData();
 }
+
+export async function lookupBarcode(code: string): Promise<Entity | null> {
+  return getAdapter().lookupBarcode(code);
+}
+
+export async function saveBarcode(code: string, paintId: string): Promise<void> {
+  return getAdapter().saveBarcode(code, paintId);
+}

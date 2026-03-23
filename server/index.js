@@ -7,6 +7,7 @@ import searchRoutes from './routes/search.js';
 import paintsRoutes from './routes/paints.js';
 import recipesRoutes from './routes/recipes.js';
 import seedRoutes from './routes/seed.js';
+import barcodesRoutes from './routes/barcodes.js';
 
 const PORT = process.env.PORT || 3001;
 
@@ -26,6 +27,7 @@ app.use('/api/search', searchRoutes);
 app.use('/api/paints', paintsRoutes);
 app.use('/api/recipes', recipesRoutes);
 app.use('/api/seed', seedRoutes);
+app.use('/api/barcodes', barcodesRoutes);
 
 // Start
 async function start() {

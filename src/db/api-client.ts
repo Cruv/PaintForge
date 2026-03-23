@@ -96,5 +96,22 @@ export function createApiAdapter(): DatabaseAdapter {
       const result = await apiFetch<{ seeded: boolean }>('/seed/status');
       return result.seeded;
     },
+
+    async lookupBarcode(code: string): Promise<Entity | null> {
+      try {
+        const result = await apiFetch<{ barcode: string; paint: Entity }>(`/barcodes/${encodeURIComponent(code)}`);
+        return result.paint;
+      } catch (e: unknown) {
+        if (e instanceof Error && e.message.includes('404')) return null;
+        throw e;
+      }
+    },
+
+    async saveBarcode(code: string, paintId: string): Promise<void> {
+      await apiFetch('/barcodes', {
+        method: 'POST',
+        body: JSON.stringify({ barcode: code, paint_id: paintId }),
+      });
+    },
   };
 }

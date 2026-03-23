@@ -27,6 +27,13 @@ async function initializeDatabase(database: SQLite.SQLiteDatabase): Promise<void
     CREATE INDEX IF NOT EXISTS idx_entities_type ON entities(type);
     CREATE INDEX IF NOT EXISTS idx_entities_name ON entities(name);
 
+    CREATE TABLE IF NOT EXISTS barcode_mappings (
+      barcode TEXT PRIMARY KEY,
+      paint_id TEXT NOT NULL,
+      created TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_barcode_paint ON barcode_mappings(paint_id);
+
     CREATE VIRTUAL TABLE IF NOT EXISTS entities_fts USING fts5(
       name,
       brand,
@@ -257,6 +264,26 @@ export async function hasSeedData(): Promise<boolean> {
   return (row?.count ?? 0) > 0;
 }
 
+// --- Barcode Mappings ---
+
+export async function lookupBarcode(code: string): Promise<Entity | null> {
+  const database = await getDatabase();
+  const row = await database.getFirstAsync<{ paint_id: string }>(
+    'SELECT paint_id FROM barcode_mappings WHERE barcode = ?',
+    [code]
+  );
+  if (!row) return null;
+  return getEntity(row.paint_id);
+}
+
+export async function saveBarcode(code: string, paintId: string): Promise<void> {
+  const database = await getDatabase();
+  await database.runAsync(
+    'INSERT OR REPLACE INTO barcode_mappings (barcode, paint_id, created) VALUES (?, ?, ?)',
+    [code, paintId, new Date().toISOString()]
+  );
+}
+
 // --- Helpers ---
 
 function getEntityName(entity: Entity): string {
@@ -293,5 +320,7 @@ export function createSqliteAdapter(): DatabaseAdapter {
     getOwnedPaints,
     getEntityCount,
     hasSeedData,
+    lookupBarcode,
+    saveBarcode,
   };
 }

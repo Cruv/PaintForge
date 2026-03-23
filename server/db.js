@@ -39,6 +39,16 @@ export async function initDb() {
   db.run('CREATE INDEX IF NOT EXISTS idx_entities_type ON entities(type)');
   db.run('CREATE INDEX IF NOT EXISTS idx_entities_name ON entities(name)');
 
+  // Barcode mappings table (learned barcode → paint associations)
+  db.run(`
+    CREATE TABLE IF NOT EXISTS barcode_mappings (
+      barcode TEXT PRIMARY KEY,
+      paint_id TEXT NOT NULL,
+      created TEXT NOT NULL
+    )
+  `);
+  db.run('CREATE INDEX IF NOT EXISTS idx_barcode_paint ON barcode_mappings(paint_id)');
+
   // Try FTS5 — may not be available in all sql.js builds
   try {
     db.run(`
