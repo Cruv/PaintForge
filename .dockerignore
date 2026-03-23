@@ -1,0 +1,14 @@
+node_modules
+dist
+.expo
+.git
+.github
+.claude
+.vscode
+.idea
+ios
+android
+*.md
+.DS_Store
+.env
+.env.*
